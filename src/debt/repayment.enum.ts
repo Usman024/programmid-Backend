@@ -1,0 +1,6 @@
+export enum Repayment {
+  HUNDRED_PERCENT = 100,
+  SEVENTY_FIVE_PERCENT = 75,
+  FIFTY_PERCENT = 50,
+  TWENTY_FIVE_PERCENT = 25
+}

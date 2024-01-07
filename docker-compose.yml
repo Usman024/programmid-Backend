@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  server:
+    container_name: god-api
+    image: "god-backend"
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    depends_on:
+      - "cache"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/god
+
+  cache:
+    image: redis:7.0.4-alpine
+    container_name: god-redis
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "6369:6379"
+    command: "redis-server --requirepass ${REDIS_PASSWORD}"
+#     logging:
+#       driver: none
